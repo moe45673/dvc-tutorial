@@ -1,0 +1,9 @@
+preprocess:
+  denoise_weight: 0.2
+
+train:
+  image_width: 30
+  image_height: 30
+  batch_size: 32
+  learning_rate: 0.1
+  n_epochs: 5

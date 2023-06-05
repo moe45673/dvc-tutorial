@@ -5,6 +5,7 @@ from skimage.restoration import denoise_tv_chambolle
 from pathlib import Path
 from tqdm import tqdm
 from dvc.api import params_show
+import numpy as np
 
 DATA_DIR = Path("data")
 train_dir = DATA_DIR / "raw" / "train"
@@ -19,6 +20,9 @@ def save_image(image_array, image_path):
     # Create the path to the image in the prepared directory
     target_path = str(image_path).replace("raw", "prepared")
     Path(target_path).parent.mkdir(parents=True, exist_ok=True)
+
+    # Scale image data and convert to uint8
+    image_array = (image_array * 255).astype(np.uint8)
 
     imsave(target_path, image_array)
 
